@@ -1,8 +1,7 @@
 function getCampusids(){
-	var campuses = {};
+	var campuses = [];
 	for(var i = 0; i < camp.length; i ++){
-		campuses[camp[i][1]]
-		campuses[camp[i][1]].push(camp[i][0]);
+		campuses.push(camp[i][0]);
 	};
 	return campuses;
 }
