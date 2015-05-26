@@ -20,14 +20,15 @@ View(zip)
 View(com)
 
 ziptx <- data.frame(tx$zip)
-as.character(ziptx)
+as.vector(unlist(ziptx), mode = "numeric")
 
 zipcom <- data.frame(com$Zip)
-as.character(zipcom)
+as.vector(unlist(zipcom), mode = "numeric")
 
 Texas <- vector()
 ext <- vector()
 
+## Method A
 for (i in 1:nrow(zipcom)){
   if(((as.numeric(zipcom[i,]) %in% unlist(ziptx))) == TRUE){
     Texas[i] <- as.numeric(zipcom[i,])
@@ -37,13 +38,20 @@ for (i in 1:nrow(zipcom)){
   }
 }
 
-cont <- data.frame(cont)
+## Method B
+texas2 <- zipcom[match(zipcom, ziptx),]
 
-View(cont)
+## Method C
+texas3 <- subset(zipcom, zipcom %in% ziptx)
+row.names(texas3) <- NULL
 
-v <- c("a", "b", "c", "d")
 
-"d" %in% v
+
+
+# # Testing
+# v <- c("a", "b", "c", "d")
+# 
+# "d" %in% v
 
 
 
